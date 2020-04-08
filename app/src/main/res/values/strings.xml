@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Elektronické voľby</string>
+    <string-array name="candidatesNamesSA">
+        <item>Albus Dumbledor</item>
+        <item>Filius Flitwick</item>
+        <item>Gilderoy Lockhart</item>
+        <item>Horace Slughorn</item>
+        <item>Minerva McGonagall</item>
+        <item>Pomona Sprout</item>
+        <item>Remus Lupin</item>
+        <item>Rubeus Hagrid</item>
+        <item>Severus Snape</item>
+        <item>Sybill Trelawney</item>
+    </string-array>
+</resources>
