@@ -43,7 +43,6 @@ public class DetailCandidateFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
                 Intent i = new Intent(getContext(), VoteActivity.class);
                 startActivity(i);
             }
@@ -55,12 +54,7 @@ public class DetailCandidateFragment extends Fragment {
             "Horace Slughorn", "Minerva McGonagall", "Pomona Sprout", "Remus Lupin",
             "Rubeus Hagrid", "Severus Snape", "Sybill Trelawney"};
 
-    private void setDetailsAboutCandidate(Integer candidateID) {
+    private void setDetailsAboutCandidate(@org.jetbrains.annotations.NotNull Integer candidateID) {
         detailAboutCandidate.setText("Detail..." + detailsAboutCandidates[candidateID]);
     }
-
-    public void onPickedCandidate(View view) {
-
-    }
-
 }

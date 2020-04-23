@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.widget.ListView;
 
 public class MainActivity extends AppCompatActivity {
+
     private Integer[] candidateImages = new Integer[]{
             R.drawable.albus_dumbledor, R.drawable.filius_flitwick,
             R.drawable.gilderoy_lockhart, R.drawable.horace_slughorn,
