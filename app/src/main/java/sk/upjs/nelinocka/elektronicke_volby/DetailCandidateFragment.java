@@ -47,7 +47,6 @@ public class DetailCandidateFragment extends Fragment {
                 startActivity(i);
             }
         });
-
     }
 
     private String[] detailsAboutCandidates = new String[]{"Albus Dumbledor", "Filius Flitwick", "Gilderoy Lockhart",
