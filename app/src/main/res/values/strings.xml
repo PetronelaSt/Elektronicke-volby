@@ -5,7 +5,7 @@
     <string name="vypln">Vyplňte prosím číslo občianskeho preukazu a PIN.</string>
     <string name="odosli_hlas">Odoslať hlas</string>
     <string-array name="candidatesNamesSA">
-        <item>Albus Dumbledor</item>
+        <item>Albus Dumbledor*</item>
         <item>Filius Flitwick</item>
         <item>Gilderoy Lockhart</item>
         <item>Horace Slughorn</item>

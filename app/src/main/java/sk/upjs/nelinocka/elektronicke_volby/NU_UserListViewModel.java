@@ -1,5 +1,6 @@
 package sk.upjs.nelinocka.elektronicke_volby;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import androidx.lifecycle.*;
@@ -17,6 +18,15 @@ public class NU_UserListViewModel extends ViewModel {
 
         return users;
     }
+
+    public void updateUser(NU_User oldUser, NU_User newUser) {
+        ArrayList<NU_User> update = new
+                ArrayList<>(users.getValue());
+        update.remove(oldUser);
+        update.add(newUser);
+        users.postValue(update);
+    }
+
 
     public void refresh() {
         Call<List<NU_User>> call = voteApi.getUsers();

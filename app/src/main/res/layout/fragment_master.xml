@@ -1,62 +1,57 @@
-<?xml version="1.0" encoding="utf-8"?><!--ListView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/candidateName"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:entries="@array/candidatesNamesSA"
-    tools:context=".CandidateListViewFragment" /-->
+<?xml version="1.0" encoding="utf-8"?>
 <ListView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/listView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-    android:entries="@array/candidatesNamesSA"
-    tools:context=".CandidateListViewFragment" />
-
-<!--RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:id="@+id/listView"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:padding="10px"-->
 
-    <!--RelativeLayout
+    tools:context=".CandidateListViewFragment">
+
+    <androidx.recyclerview.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/rowBg"-->
+        android:padding="10px">
 
-        <!--ImageView
-            android:id="@+id/candidateImg"
-            android:layout_width="148dp"
-            android:layout_height="104dp"
-            android:layout_margin="10px"
-            android:scaleType="fitXY"
-            android:src="@drawable/albus_dumbledor" /-->
-
-        <!--RelativeLayout
-            android:id="@+id/candidateDetails"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@id/candidateImg"-->
+            android:background="@color/rowBg">
 
-            <!--TextView
-                android:id="@+id/candidatePoliticalParty"
+            <ImageView
+                android:id="@+id/candidateImg"
+                android:layout_width="148dp"
+                android:layout_height="104dp"
+                android:layout_margin="10px"
+                android:scaleType="fitXY"
+                android:src="@drawable/albus_dumbledor" />
+
+            <RelativeLayout
+                android:id="@+id/candidateDetails"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/candidateName"
-                android:layout_margin="10px"
-                android:text="Political Party: Gryffindor"
-                android:textColor="@color/candidatePoliticalParty"
-                android:textSize="16sp" /-->
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/candidateImg">
 
-            <!--ListView
-                android:id="@+id/candidateName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10px"
-                android:entries="@array/candidatesNamesSA"
-                android:textSize="18sp"
-                tools:context=".CandidateListViewFragment" /-->
-        <!--/RelativeLayout-->
-    <!--/RelativeLayout-->
-<!--/RelativeLayout-->
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/candidatePoliticalParty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/candidateName"
+                    android:layout_margin="10px"
+                    android:text="Political Party: Gryffindor"
+                    android:textColor="@color/candidatePoliticalParty"
+                    android:textSize="16sp" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/candidateName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10px"
+                    android:text="Name: Albus Dumbledore"
+                    android:textColor="@color/candidateName"
+                    android:textSize="18sp" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </androidx.recyclerview.widget.RecyclerView>
+</ListView>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.recyclerview.widget.RecyclerView android:id="@+id/recycler_view"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="10px">
@@ -24,7 +25,7 @@
             android:layout_centerVertical="true"
             android:layout_toRightOf="@id/candidateImg">
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/candidatePoliticalParty"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -34,7 +35,7 @@
                 android:textColor="@color/candidatePoliticalParty"
                 android:textSize="16sp" />
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/candidateName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -44,4 +45,4 @@
                 android:textSize="18sp" />
         </RelativeLayout>
     </RelativeLayout>
-</RelativeLayout>
+</androidx.recyclerview.widget.RecyclerView>
