@@ -49,6 +49,6 @@ public class MainActivity extends AppCompatActivity {
     public void showDetailFragment(Candidate candidate) {
         getSupportFragmentManager().beginTransaction().replace(R.id.activity_main, new DetailCandidateFragment())
                 .addToBackStack(null).commit();
-        getSupportActionBar().setTitle("Info o " + candidate.name);
+        getSupportActionBar().setTitle("Info o " + candidate.meno);
     }
 }

@@ -8,7 +8,7 @@ import retrofit2.http.*;
 
 public interface NU_VoteApi {
     String BASE_URL =
-            "http://localhost:3000/";
+            "http://192.168.0.101:3000/";
 
     @GET("Muggles")
     Call<List<NU_User>> getUsers();

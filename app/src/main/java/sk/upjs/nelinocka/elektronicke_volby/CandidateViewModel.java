@@ -1,5 +1,8 @@
 package sk.upjs.nelinocka.elektronicke_volby;
 
+import android.content.Context;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,12 +38,16 @@ public class CandidateViewModel extends ViewModel {
                                    Response<List<Candidate>> response) {
                 if (response.isSuccessful()) {
                     CandidateViewModel.this.candidates.postValue(response.body());
+                    Toast.makeText(null, "onResponse ok", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(null, "onResponse zle", Toast.LENGTH_LONG).show();
                 }
             }
 
             @Override
             public void onFailure(Call<List<Candidate>> call, Throwable t) {
-                t.printStackTrace();
+                System.out.println("onFailure!");
+
             }
         });
     }

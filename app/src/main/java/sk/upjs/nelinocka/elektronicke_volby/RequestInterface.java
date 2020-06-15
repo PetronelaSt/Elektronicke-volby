@@ -4,6 +4,6 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 
 public interface RequestInterface {
-    @GET("http://localhost:3000/Kandidati")
+    @GET("http://192.168.0.101:3000/Kandidati")
     Call<JSONResponse> getJSON();
 }

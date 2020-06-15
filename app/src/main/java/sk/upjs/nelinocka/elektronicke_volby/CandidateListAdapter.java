@@ -38,9 +38,9 @@ public class CandidateListAdapter extends ListAdapter<Candidate, CandidateViewHo
             @Override
             public boolean areContentsTheSame(@NonNull Candidate oldItem, @NonNull Candidate newItem) {
                 boolean equals = false;
-                if ((oldItem.name.equals(newItem.name)) &&
-                        (oldItem.politicalParty.equals(newItem.politicalParty)) &&
-                        (oldItem.age == (newItem.age)) &&
+                if ((oldItem.meno.equals(newItem.meno)) &&
+                        (oldItem.strana.equals(newItem.strana)) &&
+                        (oldItem.vek == (newItem.vek)) &&
                         (oldItem.info.equals(newItem.info)))
                     equals = true;
                 return equals;

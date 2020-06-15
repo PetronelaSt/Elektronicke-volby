@@ -24,9 +24,9 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(DataAdapter.ViewHolder holder, int position) {
-        holder.name.setText(android.get(position).name);
-        holder.party.setText(android.get(position).politicalParty);
+    public void onBindViewHolder(ViewHolder holder, int position) {
+        holder.name.setText(android.get(position).meno);
+        holder.party.setText(android.get(position).strana);
     }
 
     @Override
