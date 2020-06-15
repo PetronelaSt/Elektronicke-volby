@@ -12,6 +12,8 @@ public interface CandidateApi {
     String BASE_URL =
             "http://localhost:3000/";
 
+    @SuppressWarnings("ALL")
+
     @GET("Kandidati")
     Call<List<Candidate>> getCandidates();
 

@@ -12,25 +12,6 @@ import retrofit2.Response;
 
 public class CandidateViewModel extends ViewModel {
 
-    private MutableLiveData<String> selectedCandidate = new MutableLiveData<>();
-    private MutableLiveData<Integer> selectedCandidateID = new MutableLiveData<>();
-
-    public LiveData<String> getSelectedCandidate() {
-        return selectedCandidate;
-    }
-
-    public LiveData<Integer> getSelectedCandidateID() {
-        return selectedCandidateID;
-    }
-
-    public void setSelectedCandidate(String selectedCandidate) {
-        this.selectedCandidate.postValue(selectedCandidate);
-    }
-
-    public void setSelectedCandidateID(int position) {
-        this.selectedCandidateID.postValue(position);
-    }
-
     private CandidateApi candidateApi = CandidateApi.API;
     private MutableLiveData<List<Candidate>> candidates;
 
@@ -45,6 +26,9 @@ public class CandidateViewModel extends ViewModel {
 
     public void refresh() {
         Call<List<Candidate>> call = candidateApi.getCandidates();
+
+        call = candidateApi.getCandidates();
+
         call.enqueue(new Callback<List<Candidate>>() {
             @Override
             public void onResponse(Call<List<Candidate>> call,

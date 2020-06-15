@@ -38,7 +38,7 @@ public class DetailCandidateFragment extends Fragment {
         CandidateViewModel candidateViewModel = viewModelProvider.get(CandidateViewModel.class);
 
         //candidateViewModel.getSelectedCandidate().observe(this, this::setDetailsAboutCandidate);
-        candidateViewModel.getSelectedCandidateID().observe(this, this::setDetailsAboutCandidate);
+//        candidateViewModel.getSelectedCandidateID().observe(this, this::setDetailsAboutCandidate);
 
         detailAboutCandidate.setMovementMethod(new ScrollingMovementMethod());
 

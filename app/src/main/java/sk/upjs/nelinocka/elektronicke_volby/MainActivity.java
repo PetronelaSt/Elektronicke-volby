@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     /*
@@ -30,14 +31,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         getSupportFragmentManager().beginTransaction().replace(R.id.activity_main, new CandidateListViewFragment()).commit();
 
-        ViewModelProvider viewModelProvider = new ViewModelProvider(this);
-        CandidateViewModel candidateViewModel =
-                viewModelProvider.get(CandidateViewModel.class);
+        //  showCandidateFragment();
+        //   ViewModelProvider viewModelProvider = new ViewModelProvider(this);
+        //  CandidateViewModel candidateViewModel =
+        //        viewModelProvider.get(CandidateViewModel.class);
        /* candidateViewModel.getSelectedCandidate().observe(this,
                 this::showDetailFragment);*/
-        candidate.name = findViewById(R.id.candidateName).toString();
-        candidate.politicalParty = findViewById(R.id.candidatePoliticalParty).toString();
-        //  candidateViewModel.getSelectedCandidate().observe(this, showDetailFragment(candidate));
+        //  CandidateListViewFragment candidateListViewFragment = new CandidateListViewFragment();
+    }
+
+    private void showCandidateFragment() {
+        getSupportFragmentManager().beginTransaction().replace(R.id.activity_main, new CandidateListViewFragment())
+                .addToBackStack(null).commit();
+
     }
 
     public void showDetailFragment(Candidate candidate) {

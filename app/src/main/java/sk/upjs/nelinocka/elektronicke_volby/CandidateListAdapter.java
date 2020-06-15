@@ -8,12 +8,17 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.DiffUtil;
+import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 //extends BaseAdapter
-public class CandidateListAdapter extends BaseAdapter {
+public class CandidateListAdapter extends ListAdapter<Candidate, CandidateViewHolder> {
     private Integer[] candidateImages;
     private String[] candidateNames, candidatePoliticalParties;
     private LayoutInflater inflater;
@@ -21,11 +26,35 @@ public class CandidateListAdapter extends BaseAdapter {
     private ImageView candidateImg;
     private TextView candidateName, candidatePoliticalParty;
     private ArrayList<Candidate> candidate;
+    private final CandidateOnClickListener candidateOnClickListener;
 
-    public CandidateListAdapter(ArrayList<Candidate> candidate) {
+    public CandidateListAdapter(CandidateOnClickListener candidateOnClickListener) {
+        super(new DiffUtil.ItemCallback<Candidate>() {
+            @Override
+            public boolean areItemsTheSame(@NonNull Candidate oldItem, @NonNull Candidate newItem) {
+                return (oldItem == newItem);
+            }
+
+            @Override
+            public boolean areContentsTheSame(@NonNull Candidate oldItem, @NonNull Candidate newItem) {
+                boolean equals = false;
+                if ((oldItem.name.equals(newItem.name)) &&
+                        (oldItem.politicalParty.equals(newItem.politicalParty)) &&
+                        (oldItem.age == (newItem.age)) &&
+                        (oldItem.info.equals(newItem.info)))
+                    equals = true;
+                return equals;
+            }
+        });
         this.candidate = candidate;
+        this.candidateOnClickListener = candidateOnClickListener;
     }
 
+    /*    public CandidateListAdapter(ArrayList<Candidate> candidate) {
+            this.candidate = candidate;
+        }
+    */
+    /*
     public CandidateListAdapter(Integer[] candidateImages, String[] candidateNames,
                                 String[] candidatePoliticalParties, Context context) {
         this.candidateImages = candidateImages;
@@ -33,9 +62,12 @@ public class CandidateListAdapter extends BaseAdapter {
         this.candidatePoliticalParties = candidatePoliticalParties;
         this.context = context;
         inflater = (LayoutInflater.from(context));
+    }*/
+
+    public void setContext(Context context) {
+        this.context = context;
     }
-
-
+/*
     @Override
     public int getCount() {
         return candidate.size();
@@ -51,23 +83,32 @@ public class CandidateListAdapter extends BaseAdapter {
         return 0;
     }
 
-    /*  @Override
-      public CandidateListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-    View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_row,parent,false);
-    return view;
-    }*/
-/*
+ */
+
     @Override
-    public void onBindViewHolder(View view, int position) {
-        view = inflater.inflate(R.layout.listview_row, null);
-        candidateImg = view.findViewById(R.id.candidateImg);
-        candidateName = view.findViewById(R.id.candidateName);
-        candidatePoliticalParty = view.findViewById(R.id.candidatePoliticalParty);
-        candidateImg.setImageResource(candidateImages[position]);
-        candidateName.setText(candidateNames[position]);
-        candidatePoliticalParty.setText(candidatePoliticalParties[position]);
-  }
-*/
+    public CandidateViewHolder onCreateViewHolder(@NotNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.listview_row, parent, false);
+        return new CandidateViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull CandidateViewHolder holder, int position) {
+        Candidate c = this.candidate.get(position);
+        holder.bind(c, candidateOnClickListener);
+    }
+
+    /*
+        @Override
+        public void onBindViewHolder(View view, int position) {
+            view = inflater.inflate(R.layout.listview_row, null);
+            candidateImg = view.findViewById(R.id.candidateImg);
+            candidateName = view.findViewById(R.id.candidateName);
+            candidatePoliticalParty = view.findViewById(R.id.candidatePoliticalParty);
+            candidateImg.setImageResource(candidateImages[position]);
+            candidateName.setText(candidateNames[position]);
+            candidatePoliticalParty.setText(candidatePoliticalParties[position]);
+      }
+
     @Override
     public View getView(int position, View view, ViewGroup parent) {
         view = inflater.inflate(R.layout.listview_row, null);
@@ -78,7 +119,7 @@ public class CandidateListAdapter extends BaseAdapter {
         candidateName.setText(candidateNames[position]);
         candidatePoliticalParty.setText(candidatePoliticalParties[position]);
         return view;
-    }
+    }*/
 }
 /**
  * <p>

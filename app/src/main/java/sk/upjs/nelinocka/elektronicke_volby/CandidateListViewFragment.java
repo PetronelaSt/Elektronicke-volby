@@ -11,20 +11,23 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class CandidateListViewFragment extends Fragment {
+public class CandidateListViewFragment extends Fragment implements CandidateOnClickListener {
     ListView candidatesNamesListView;
 
     /////
@@ -36,9 +39,13 @@ public class CandidateListViewFragment extends Fragment {
     /////
 
     private Candidate selectedCandidate;
+    private CandidateViewModel candidateViewModel;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     public CandidateListViewFragment() {
     }
+
+    private RecyclerView listRecyclerView;
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -46,9 +53,27 @@ public class CandidateListViewFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_master,
                 container, false);
+
+
+        CandidateListAdapter clAdapter = new CandidateListAdapter(this);
+        clAdapter.setContext(getContext());
+
+        listRecyclerView = view.findViewById(R.id.listRecyclerView);
+        listRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        listRecyclerView.setAdapter(clAdapter);
+
+        candidateViewModel = new ViewModelProvider(this).get(CandidateViewModel.class);
+        candidateViewModel.getCandidates().observe(this, new Observer<List<Candidate>>() {
+            @Override
+            public void onChanged(List<Candidate> candidates) {
+                clAdapter.submitList(candidates);
+            }
+        });
+
         return view;
     }
 
+    @Override
     public void onCandidateClick(@NotNull Candidate candidate) {
         selectedCandidate = candidate;
         ((MainActivity) getActivity()).showDetailFragment(candidate);
